@@ -1,38 +1,145 @@
-.App {
+/* Styling for the project below */
+body {
+  background-color: rgb(242, 244, 244);
+}
+
+
+.page-title {
   text-align: center;
+  margin-top: 60px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.login-container {
+  background-image: url("Roommate/bg.png");
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-size: cover;
 }
 
-.App-link {
-  color: #61dafb;
+.login-form {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 40px;
+  border-radius: 0.6em;
+box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+background-color: #ffffffe3;
+
+
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* For devices with smaller screens increase the width of the container */
+@media only screen and (max-device-width: 768px) {
+  .login-form {
+    width: 80%;
+    padding: 20px;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+.notValid {
+  border-color: red;
+}
+
+.notification-alert {
+  font-size: 0.8em;
+  color: red;
+}
+
+.register-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.register-section div {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.register-section .image-container {
+  text-align: center;
+  width: 40%;
+}
+
+.register-section img {
+  object-fit: contain;
+  width: 80%;
+  height: 80%;
+
+}
+
+.register-section .form-container {
+box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+padding: 30px;
+  background-color: #fff;
+  border-radius: 0.6em;
+  min-width: 40%;
+}
+
+@media only screen and (max-device-width: 768px) {
+  .register-section .form-container {
+    width: 61%;
+    padding: 10px;
+  }
+}
+
+@media only screen and (max-device-width: 425px) {
+  .register-section .form-container {
+    width: 80%;
+    padding: 10px;
+  }
+}
+
+.register-section label {
+  line-height: 0;
+}
+
+.register-section select {
+  margin-bottom: 6px;
+}
+
+
+.home{
+  display: flex;
+}
+@media only screen and (max-device-width: 768px) {
+  .home {
+    flex-wrap: wrap-reverse;
+  }
+  .filters{
+    width: 100%;
+  }
+}
+
+.box{
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  background-color: #fff;
+  border-radius: 0.6em;
+  padding: 10px;
+  margin: 20px ;
+  
+
+}
+.announcements-list{
+  width: 100%
+}
+.buttons-container{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.buttons-container .btn{
+  margin: 10px;
+}
+
+@media only screen and (max-device-width: 425px) {
+  .buttons-container .btn{
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 100% ;
   }
 }
