@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Ad from "./Ad";
 import SingleAnnouncement from "./SingleAnnouncement";
 
 function Home({
@@ -38,12 +39,13 @@ function Home({
                             setBudget(e.target.value);
                             if (e.target.value < 0) {
                                 setBudget(0);
+                                alert("budget cannot be negative!");
                             }
                         }} />
 
-                        <label>Interested in Roommies who already have a house?</label>   <br/>                     
-                        <input type={"radio"} id="hasHouse" name="house" value={"hasHouse"} /> <label htmlFor="hasHouse">Roommies with a house:</label> <br/>
-                        <input type={"radio"} id="NotHaveHouse" name="house" value={"NotHaveHouse"} defaultChecked/> <label htmlFor="NotHaveHouse">All roommies:</label>
+                        <label>Interested in Roommies who already have a house?</label>   <br />
+                        <input type={"radio"} id="hasHouse" name="house" value={"hasHouse"} /> <label htmlFor="hasHouse">Roommies with a house:</label> <br />
+                        <input type={"radio"} id="NotHaveHouse" name="house" value={"NotHaveHouse"} defaultChecked /> <label htmlFor="NotHaveHouse">All roommies:</label>
                     </form>
                     <button className="btn btn-primary" > Update results </button>
                 </div>
@@ -59,6 +61,7 @@ function Home({
 
                 </div>
             </div>
+            <Ad/>
         </>
     )
 
