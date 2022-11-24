@@ -3,46 +3,46 @@ import { Link } from "react-router-dom";
 import P1 from "./p1.png";
 import P2 from "./p2.png";
 
-function Register() {
+function Register({setUserID}) {
   const [emailIsValid, setEmailIsValid] = useState(true);
   const [budget, setBudget] = useState("0");
   const [p1, setP1] = useState("");
   const [p2, setP2] = useState("");
-  const [fullName, setFullname] = useState(null);
-  const [email, setEmail] = useState(null);
-  const [gender, setGender] = useState(null);
-  const [phoneNumber, setPhoneNumber] = useState(null);
-  const [school, setSchool] = useState(null);
-  const [about, setAbout] = useState(null);
-  const [drinking, setDrinking] = useState(null);
-  const [smoking, setSmoking] = useState(null);
-  const [visitsFrequency, setVisitsFrequency] = useState(null);
-  const [loudness, setLoudness] = useState(null);
+  const [fullName, setFullname] = useState("");
+  const [email, setEmail] = useState("");
+  const [gender, setGender] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [school, setSchool] = useState("");
+  const [about, setAbout] = useState("");
+  const [drinking, setDrinking] = useState("");
+  const [smoking, setSmoking] = useState("");
+  const [visitsFrequency, setVisitsFrequency] = useState("");
+  const [loudness, setLoudness] = useState("");
 
   let handleSubmit = async (e) => {
     e.preventDefault();
-    if (fullName == null) {
+    if (fullName === "") {
       alert("fullName field is mandatory");
     }
-    else if (email == null) {
+    else if (email === "") {
       alert("Email field is mandatory");
     }
-    else if (p1 == null) {
+    else if (p1 === "") {
       alert("password field is mandatory");
     }
-    else if (gender == null) {
+    else if (gender === "") {
       alert("gender field is mandatory");
     }
-    else if (phoneNumber == null) {
+    else if (phoneNumber === "") {
       alert("phoneNumber field is mandatory");
     }
-    else if (school == null) {
+    else if (school === "") {
       alert("school field is mandatory");
     }
-    else if (budget == null) {
+    else if (budget === "") {
       alert("budget field is mandatory");
     }
-    else if (about == null) {
+    else if (about === "") {
       alert("about field is mandatory");
     }
     else {
@@ -75,7 +75,10 @@ function Register() {
       }
     };
   }
-
+  
+  //Logout the connected user, if any
+  window.sessionStorage.setItem("userID", null);
+  setUserID(null);
   return (
     <form>
       <br />

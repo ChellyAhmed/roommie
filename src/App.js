@@ -73,17 +73,25 @@ function App() {
         }
     }
 
-    const [logged, setLogged] = useState(false);
+    const logout = () => {
+        window.sessionStorage.setItem("userID", null);
+        setUserID(null);
+    }
+
+
+    const [userID , setUserID] = useState(window.sessionStorage.getItem("userID"));
+
+
   
     return (
         <BrowserRouter>
-            {logged && (<Navbar />)}
+            {userID!=null && (<Navbar logout={logout}/>)}
 
 
             <Routes>
-                <Route path="/" element={<Login />} />
-                <Route path="/Register" element={<Register />} />
-                <Route path="/Home" element={<Home drinkingText={drinkingText}
+                <Route path="/" element={<Login setUserID={setUserID} logout={logout} />} />
+                <Route path="/Register" element={<Register setUserID={setUserID} />} />
+                <Route path="/Home" element={<Home setUserID={setUserID} drinkingText={drinkingText}
                     smokingText={smokingText}
                     visitsFrequencyText={visitsFrequencyText}
                     loudnessText={loudnessText} />} />

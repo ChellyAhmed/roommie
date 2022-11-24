@@ -7,6 +7,7 @@ function Home({
     smokingText,
     visitsFrequencyText,
     loudnessText,
+    setUserID
 }) {
 
     const [budget, setBudget] = useState("10000");
@@ -19,6 +20,8 @@ function Home({
         { announcementID: 4, fullName: "John Doe", email: "John.doe@smu.tn", gender: "female", about: "Hi I'm cool!", school: "MSB", phoneNumber: "12345678", budget: 400, drinking: null, smoking: 0, visitsFrequency: 2, loudness: 1, location: "Lac2", houseDescription: null },
         { announcementID: 5, fullName: "John Doe", email: "John.doe@smu.tn", gender: "male", about: "Hi I'm cool!", school: "MSB", phoneNumber: "12345678", budget: 400, drinking: 0, smoking: null, visitsFrequency: 3, loudness: 1, location: "Lac2", houseDescription: null },
     ];
+
+
     return (
         <>
             <div className="page-title"> <h1>Roommie's announcements</h1></div>
@@ -61,7 +64,7 @@ function Home({
 
                 </div>
             </div>
-            <Ad/>
+            <Ad />
         </>
     )
 

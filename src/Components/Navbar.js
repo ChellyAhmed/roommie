@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 
-function Navbar() { 
+function Navbar({logout}) { 
+
     // add class active to the active element of the navbar
     return (
         <nav className="navbar navbar-dark bg-dark fixed-top navbar-expand-lg bg-light">
@@ -18,7 +19,7 @@ function Navbar() {
                             <Link className="nav-link" to="/MyAnnouncement">My announcement</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="">Logout</Link>
+                            <Link className="nav-link" to="/" onClick={logout}>Logout</Link>
                         </li>
 
                     </ul>

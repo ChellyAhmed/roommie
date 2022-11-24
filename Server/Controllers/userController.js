@@ -8,16 +8,18 @@ const getUsers = async (req, res) => {
 
 }
 const getOneUser = async (req, res) => {
-    const id = req.params.id;
-    const founUser = users.find((user) => user.id == id);
-    if (founUser) {
-        res.status(200).json({ user: founUser });
-    } else {
-        res.status(400).json({ msg: "no user found" });
-    }
+    let user = req.body;
+    connection.query(`select * from User left join Announcement on User.userID = Announcement.announcementID where ((password="${user.password}") and  (email="${user.email}"));`, (err, rows, fields) => {
+        if (err || rows.length != 1) {
+            console.log(err);
+            res.status(400).json({ message: "User not found"});
+        }
+        else {
+            console.log("User Found");
+            res.status(200).json({ user: rows[0]});
+        }
+    })
 };
-
-
 
 const postUser = async (req, res) => {
     let user = req.body;
