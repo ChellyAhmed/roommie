@@ -5,9 +5,10 @@ import female from "./female.png";
 function Announcement({ drinkingText,
     smokingText,
     visitsFrequencyText,
-    loudnessText, }) {
+    loudnessText,
+    announcement
+}) {
     const { id } = useParams();
-    const announcement = { announcementID: 3, fullName: "John Doe", email: "John.doe@smu.tn", gender: "female", about: "Hi I'm cool!", school: "MSB", phoneNumber: "12345678", budget: 400, drinking: 1, smoking: 1, visitsFrequency: 5, loudness: 4, location: "Lac2", houseDescription: "Appartment S+2 Lac 2. All commodities included and well furnished. 3-min walk away from uni" };
 
     return (
         <>

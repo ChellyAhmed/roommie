@@ -91,7 +91,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Login setUserID={setUserID} logout={logout} />} />
                 <Route path="/Register" element={<Register setUserID={setUserID} />} />
-                <Route path="/Home" element={<Home setUserID={setUserID} drinkingText={drinkingText}
+                <Route path="/Home" element={<Home drinkingText={drinkingText}
                     smokingText={smokingText}
                     visitsFrequencyText={visitsFrequencyText}
                     loudnessText={loudnessText} />} />

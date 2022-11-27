@@ -9,7 +9,7 @@ const getUsers = async (req, res) => {
 }
 const getOneUser = async (req, res) => {
     let user = req.body;
-    connection.query(`select * from User left join Announcement on User.userID = Announcement.announcementID where ((password="${user.password}") and  (email="${user.email}"));`, (err, rows, fields) => {
+    connection.query(`select * from User left join Announcement on User.userID = Announcement.refUserID where ((password="${user.password}") and  (email="${user.email}"));`, (err, rows, fields) => {
         if (err || rows.length != 1) {
             console.log(err);
             res.status(400).json({ message: "User not found"});
@@ -35,10 +35,4 @@ const postUser = async (req, res) => {
         }
     })
 };
-const putUser = async (req, res) => {
-    console.log("put user");
-};
-const deleteUser = async (req, res) => {
-    console.log("delete user");
-};
-module.exports = { getUsers, postUser, putUser, deleteUser, getOneUser }
+module.exports = { getUsers, postUser, getOneUser }

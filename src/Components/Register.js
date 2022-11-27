@@ -97,7 +97,7 @@ function Register({setUserID}) {
           <label className="form-label">Email address:</label>
           <input
             type="email"
-            placeholder="full.name@medtech.tn"
+            placeholder="full.name@MedTech.tn"
             className={emailIsValid ? "form-control" : "form-control notValid"}
             onChange={(e) => {
               var mail_format =

@@ -14,10 +14,9 @@ var corsOptions = {
 
 app.use(cors(corsOptions));
 
-
-
 app.use(express.json());
 const userRoute = require("./routes/UserRoute");
+const announcementRoute = require("./routes/announcementRoute");
 console.log(port);
 app.listen(port, (er) => {
     if (er) {
@@ -27,3 +26,4 @@ app.listen(port, (er) => {
     }
 });
 app.use("/api", userRoute);
+app.use("/api", announcementRoute);
