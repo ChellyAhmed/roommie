@@ -7,7 +7,8 @@ import Navbar from "./Components/Navbar"
 import Announcement from "./Components/Announcement";
 import MyAnnouncement from "./Components/MyAnnouncement";
 import EditAnnouncement from "./Components/EditAnnouncement";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import ViewAnnouncement from "./Components/ViewAnnouncement";
 function App() {
     // Shared functions among different components
     const drinkingText = (v) => {
@@ -81,21 +82,21 @@ function App() {
 
     const [userID , setUserID] = useState(window.sessionStorage.getItem("userID"));
 
-
+      
   
     return (
         <BrowserRouter>
-            {userID!=null && (<Navbar logout={logout}/>)}
+            {userID != null && (<Navbar logout={logout}/>)}
 
 
             <Routes>
                 <Route path="/" element={<Login setUserID={setUserID} logout={logout} />} />
                 <Route path="/Register" element={<Register setUserID={setUserID} />} />
-                <Route path="/Home" element={<Home drinkingText={drinkingText}
+                <Route path="/Home" element={<Home userID={userID} drinkingText={drinkingText}
                     smokingText={smokingText}
                     visitsFrequencyText={visitsFrequencyText}
                     loudnessText={loudnessText} />} />
-                <Route path="/Announcement/:id" element={<Announcement drinkingText={drinkingText}
+                <Route path="/Announcement/:id" element={<ViewAnnouncement drinkingText={drinkingText}
                     smokingText={smokingText}
                     visitsFrequencyText={visitsFrequencyText}
                     loudnessText={loudnessText} />} />

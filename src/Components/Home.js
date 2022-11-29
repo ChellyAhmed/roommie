@@ -7,6 +7,7 @@ function Home({
     smokingText,
     visitsFrequencyText,
     loudnessText,
+    userID
 }) {
 
     const [announcements, setAnnouncements] = useState("none");
@@ -39,8 +40,11 @@ function Home({
     }
 
     useEffect(() => {
+        if (userID == null) {
+            window.location.href = "/";
+        }
         fetchAnnouncements();
-    }, [])
+    })
 
 
     return (

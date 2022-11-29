@@ -33,17 +33,6 @@ function Login({ setUserID, logout }) {
         setUserID (res.user.userID);
         window.sessionStorage.setItem("userID", res.user.userID) ;
         window.sessionStorage.setItem("announcementID", res.user.announcementID) ;
-        window.sessionStorage.setItem("fullName", res.user.fullName) ;
-        window.sessionStorage.setItem("email", res.user.email) ;
-        window.sessionStorage.setItem("gender", res.user.gender) ;
-        window.sessionStorage.setItem("about", res.user.about) ;
-        window.sessionStorage.setItem("school", res.user.school) ;
-        window.sessionStorage.setItem("phoneNumber", res.user.phoneNumber) ;
-        window.sessionStorage.setItem("budget", res.user.budget) ;
-        window.sessionStorage.setItem("drinking", res.user.drinking) ;
-        window.sessionStorage.setItem("smoking", res.user.smoking) ;
-        window.sessionStorage.setItem("visitsFrequency", res.user.visitsFrequency) ;
-        window.sessionStorage.setItem("loudness", res.user.loudness) ;
         window.sessionStorage.setItem("location", res.user.location) ;
         window.sessionStorage.setItem("houseDescription", res.user.houseDescription) ;
         window.location.href = "/home";
