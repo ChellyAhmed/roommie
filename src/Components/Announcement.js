@@ -1,7 +1,5 @@
-import { useParams } from "react-router-dom";
 import male from "./male.png";
 import female from "./female.png";
-import { useEffect, useState } from "react";
 
 function Announcement({ drinkingText,
     smokingText,

@@ -17,7 +17,7 @@ function ViewAnnouncement({drinkingText,
 
     useEffect(() => {
         fetchAnnouncement();
-    })
+    }, [])
 
     const [announcement , setAnnouncement] = useState("loading");
     

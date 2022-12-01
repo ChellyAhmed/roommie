@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Announcement from "./Announcement";
 
 function MyAnnouncement({ drinkingText,
     smokingText,
     visitsFrequencyText,
-    loudnessText, }) {
+    loudnessText,
+    userID
+}) {
 
     const deleteAnnouncement = async () => {
         let res = await fetch(`http://localhost:3300/api/announcementDelete`, {
@@ -23,7 +25,7 @@ function MyAnnouncement({ drinkingText,
         deleteAnnouncement();
         window.sessionStorage.setItem("announcementID", null)
         window.sessionStorage.setItem("houseID", null)
-        window.location.href = "/home"
+        navigate("/home")
     }
 
 
@@ -41,10 +43,12 @@ function MyAnnouncement({ drinkingText,
         fetchAnnouncement();
     }, [])
 
+    const navigate = useNavigate();
+
     const addAnnouncement = async () => {
         let res = await fetch("http://localhost:3300/api/announcements/add", {
             body: JSON.stringify({
-                refUserID: window.sessionStorage.getItem("userID"),
+                refUserID: userID,
                 location: location,
                 houseDescription: houseDescription
             }),
@@ -54,7 +58,8 @@ function MyAnnouncement({ drinkingText,
         window.sessionStorage.setItem("location", location);
         window.sessionStorage.setItem("houseDescription", houseDescription);
         window.sessionStorage.setItem("announcementID", res.announcementID);
-        setAnnouncement({ ...announcement, location: location, houseDescription: houseDescription, announcementID: res.announcementID });
+        window.location.reload(false);
+
     }
 
 

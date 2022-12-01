@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-function Login({ setUserID, logout }) {
+function Login({ logout, setUserID }) {
   const [emailIsValid, setEmailIsValid] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,18 +24,19 @@ function Login({ setUserID, logout }) {
     }
   }
 
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     let res = await login()
     try {
 
       if (!isNaN(res.user.userID) ) {
-        setUserID (res.user.userID);
-        window.sessionStorage.setItem("userID", res.user.userID) ;
+        setUserID(res.user.userID);
+        sessionStorage.setItem("userID", res.user.userID)
         window.sessionStorage.setItem("announcementID", res.user.announcementID) ;
         window.sessionStorage.setItem("location", res.user.location) ;
         window.sessionStorage.setItem("houseDescription", res.user.houseDescription) ;
-        window.location.href = "/home";
+        navigate("/Home");
       } 
     }
     catch (e) {

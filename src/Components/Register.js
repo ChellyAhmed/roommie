@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import P1 from "./p1.png";
 import P2 from "./p2.png";
 
-function Register({setUserID}) {
+function Register() {
   const [emailIsValid, setEmailIsValid] = useState(true);
   const [budget, setBudget] = useState("0");
   const [p1, setP1] = useState("");
@@ -14,10 +14,10 @@ function Register({setUserID}) {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [school, setSchool] = useState("");
   const [about, setAbout] = useState("");
-  const [drinking, setDrinking] = useState("");
-  const [smoking, setSmoking] = useState("");
-  const [visitsFrequency, setVisitsFrequency] = useState("");
-  const [loudness, setLoudness] = useState("");
+  const [drinking, setDrinking] = useState(null);
+  const [smoking, setSmoking] = useState(null);
+  const [visitsFrequency, setVisitsFrequency] = useState(null);
+  const [loudness, setLoudness] = useState(null);
 
   let handleSubmit = async (e) => {
     e.preventDefault();
@@ -75,10 +75,6 @@ function Register({setUserID}) {
       }
     };
   }
-  
-  //Logout the connected user, if any
-  window.sessionStorage.setItem("userID", null);
-  setUserID(null);
   return (
     <form>
       <br />
@@ -181,14 +177,14 @@ function Register({setUserID}) {
 
           {/* Smoking */}
           <select className="form-select" aria-label="Smoking tolerance" onChange={(e) => { setSmoking(parseInt((e.target.value))) }} >
-            <option defaultChecked>Do you allow smoking indoors</option>
+            <option value ={null} defaultChecked>Do you allow smoking indoors</option>
             <option value="0">I smoke, or allow smoking indoors</option>
             <option value="1">I prohibit smoking indoors</option>
           </select>
 
           {/* Visits Frequency */}
           <select className="form-select" aria-label="Visits Frequency" onChange={(e) => { setVisitsFrequency(parseInt((e.target.value))) }}>
-            <option defaultChecked>How often do you invite guests over</option>
+            <option value ={null} defaultChecked>How often do you invite guests over</option>
             <option value="1">1: never</option>
             <option value="2">2: Once/Twice a month</option>
             <option value="3">3: Once a week/ during weekends</option>
@@ -198,7 +194,7 @@ function Register({setUserID}) {
 
           {/* Loudness */}
           <select className="form-select" aria-label="Loudness" onChange={(e) => { setLoudness(parseInt((e.target.value))) }} >
-            <option defaultChecked>How loud are you?</option>
+            <option value ={null} defaultChecked>How loud are you?</option>
             <option value="1">1: Never make any noise</option>
             <option value="2">2: Rarely make some noise</option>
             <option value="3">3: Loud activities during weekends</option>

@@ -23,10 +23,7 @@ const getOneUser = async (req, res) => {
 
 const postUser = async (req, res) => {
     let user = req.body;
-    connection.query(`insert into User
-    (fullName, password, email, gender, school, about, phoneNumber, budget, drinking, smoking, visitsFrequency, loudness)
-    values
-    ("${user.fullName}", "${user.password}", "${user.email}", "${user.gender}", "${user.school}", "${user.about}", "${user.phoneNumber}", ${user.budget}, ${user.drinking}, ${user.smoking}, ${user.visitsFrequency}, ${user.loudness} );`, (err, rows, fields) => {
+    connection.query(`insert into User (fullName, password, email, gender, school, about, phoneNumber, budget, drinking, smoking, visitsFrequency, loudness) values("${user.fullName}", "${user.password}", "${user.email}", "${user.gender}", "${user.school}", "${user.about}", "${user.phoneNumber}", ${user.budget}, ${user.drinking}, ${user.smoking}, ${user.visitsFrequency}, ${user.loudness} );`, (err, rows, fields) => {
         if (err) {
             console.log(err);
         }

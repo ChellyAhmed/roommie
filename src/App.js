@@ -4,11 +4,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Register from "./Components/Register";
 import Home from "./Components/Home";
 import Navbar from "./Components/Navbar"
-import Announcement from "./Components/Announcement";
 import MyAnnouncement from "./Components/MyAnnouncement";
 import EditAnnouncement from "./Components/EditAnnouncement";
-import { useEffect, useState } from "react";
 import ViewAnnouncement from "./Components/ViewAnnouncement";
+import { useState } from "react";
 function App() {
     // Shared functions among different components
     const drinkingText = (v) => {
@@ -75,27 +74,26 @@ function App() {
     }
 
     const logout = () => {
-        window.sessionStorage.setItem("userID", null);
         setUserID(null);
+        window.sessionStorage.setItem("userID", null);
     }
 
+    const [userID, setUserID] = useState(parseInt(window.sessionStorage.getItem("userID")));
 
-    const [userID , setUserID] = useState(window.sessionStorage.getItem("userID"));
 
-      
-  
     return (
         <BrowserRouter>
-            {userID != null && (<Navbar logout={logout}/>)}
+            { (!isNaN(parseInt(userID))) && (<Navbar logout={logout}/>)}
 
 
             <Routes>
-                <Route path="/" element={<Login setUserID={setUserID} logout={logout} />} />
-                <Route path="/Register" element={<Register setUserID={setUserID} />} />
+                <Route path="/" element={<Login logout={logout} setUserID={setUserID}/>} />
+                <Route path="/Register" element={<Register />} />
                 <Route path="/Home" element={<Home userID={userID} drinkingText={drinkingText}
                     smokingText={smokingText}
                     visitsFrequencyText={visitsFrequencyText}
-                    loudnessText={loudnessText} />} />
+                    loudnessText={loudnessText} 
+                    />} />
                 <Route path="/Announcement/:id" element={<ViewAnnouncement drinkingText={drinkingText}
                     smokingText={smokingText}
                     visitsFrequencyText={visitsFrequencyText}
@@ -103,7 +101,9 @@ function App() {
                 <Route path="/MyAnnouncement" element={<MyAnnouncement drinkingText={drinkingText}
                     smokingText={smokingText}
                     visitsFrequencyText={visitsFrequencyText}
-                    loudnessText={loudnessText} />} />
+                    loudnessText={loudnessText}
+                    userID = {userID}
+                    />} />
                 <Route path="/EditAnnouncement" element={<EditAnnouncement drinkingText={drinkingText}
                     smokingText={smokingText}
                     visitsFrequencyText={visitsFrequencyText}

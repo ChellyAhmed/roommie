@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 function EditAnnouncement() {
 
     const fetchAnnouncement = async () => {
@@ -9,6 +9,8 @@ function EditAnnouncement() {
         }).then((res) => res.json());
         setAnnouncement(res.announcement);
     }
+
+    const navigate = useNavigate();
 
     const update = async () => {
         await fetch("http://localhost:3300/api/announcementUpdate", {
@@ -25,8 +27,7 @@ function EditAnnouncement() {
         });
         window.sessionStorage.setItem("location" , location);
         window.sessionStorage.setItem("houseDescription" , houseDescription);
-         window.location.href = "/MyAnnouncement" ;
-        
+        window.location.href = "/MyAnnouncement"        
     }
     
     useEffect(() => {

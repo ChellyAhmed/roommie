@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Ad from "./Ad";
 import SingleAnnouncement from "./SingleAnnouncement";
 
 function Home({
+    userID,
     drinkingText,
     smokingText,
     visitsFrequencyText,
     loudnessText,
-    userID
 }) {
 
     const [announcements, setAnnouncements] = useState("none");
@@ -39,12 +40,15 @@ function Home({
         }
     }
 
+    const navigate = useNavigate();
+
     useEffect(() => {
-        if (userID == null) {
-            window.location.href = "/";
+        if (isNaN(userID)) {
+            navigate("/");
         }
         fetchAnnouncements();
-    })
+        console.log("useEff");
+    }, [ navigate])
 
 
     return (
