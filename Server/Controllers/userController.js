@@ -1,4 +1,5 @@
 const { connection } = require("../connection");
+const jwt = require("jsonwebtoken");
 
 const getUsers = async (req, res) => {
     connection.query('SELECT * from User', (err, rows, fields) => {
@@ -15,8 +16,10 @@ const getOneUser = async (req, res) => {
             res.status(400).json({ message: "User not found"});
         }
         else {
+            let user = rows[0];
+            user.token = jwt.sign({id: user.userID}, "SecretToken");
             console.log("User Found");
-            res.status(200).json({ user: rows[0]});
+            res.status(200).json({ user: user});
         }
     })
 };
