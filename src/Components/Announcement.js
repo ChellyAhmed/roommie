@@ -1,5 +1,5 @@
-import male from "./male.png";
-import female from "./female.png";
+import male from "../Assets/male.png";
+import female from "../Assets/female.png";
 
 function Announcement({ drinkingText,
     smokingText,
@@ -25,13 +25,13 @@ function Announcement({ drinkingText,
                         <li><b>House guests:</b> {visitsFrequencyText(announcement.visitsFrequency)}</li>
                         <li><b>Loudness:</b> {loudnessText(announcement.loudness)}</li>
                         <li><b>Phone number:</b> {(announcement.phoneNumber)}</li>
+                    <li><b>desired location:</b> {announcement.location}</li>
                     </ul>
                     <p><b>About:</b><br />{announcement.about}</p>
                     {announcement.houseDescription != null &&
                         <>
                             <h3>This Roommie has a house!</h3>
                             <ul>
-                                <li><b>location:</b> {announcement.location}</li>
                                 <li><b>House houseDescription:</b>
                                     <p>{announcement.houseDescription}</p>
                                 </li>

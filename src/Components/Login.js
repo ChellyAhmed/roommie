@@ -32,6 +32,8 @@ function Login({ logout, setUserID }) {
 
       if (!isNaN(res.user.userID) ) {
         setUserID(res.user.userID);
+        //save token in session storage:
+        window.sessionStorage.setItem("token", res.user.token);
         sessionStorage.setItem("userID", res.user.userID)
         window.sessionStorage.setItem("announcementID", res.user.announcementID) ;
         window.sessionStorage.setItem("location", res.user.location) ;

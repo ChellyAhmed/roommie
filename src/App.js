@@ -8,6 +8,7 @@ import Navbar from "./Components/Navbar"
 import MyAnnouncement from "./Components/MyAnnouncement";
 import EditAnnouncement from "./Components/EditAnnouncement";
 import ViewAnnouncement from "./Components/ViewAnnouncement";
+import PrivateRoute from "./Components/PrivateRoute";
 import { useState } from "react";
 function App() {
     // Shared functions among different components
@@ -84,31 +85,54 @@ function App() {
 
     return (
         <BrowserRouter>
-            { (!isNaN(parseInt(userID))) && (<Navbar logout={logout}/>)}
+            {(!isNaN(parseInt(userID))) && (<Navbar logout={logout} />)}
 
 
             <Routes>
-                <Route path="/" element={<Login logout={logout} setUserID={setUserID}/>} />
+                <Route path="/" element={<Login logout={logout} setUserID={setUserID} />} />
                 <Route path="/Register" element={<Register />} />
-                <Route path="/Home" element={<Home userID={userID} drinkingText={drinkingText}
-                    smokingText={smokingText}
-                    visitsFrequencyText={visitsFrequencyText}
-                    loudnessText={loudnessText} 
-                    />} />
-                <Route path="/Announcement/:id" element={<ViewAnnouncement drinkingText={drinkingText}
-                    smokingText={smokingText}
-                    visitsFrequencyText={visitsFrequencyText}
-                    loudnessText={loudnessText} />} />
-                <Route path="/MyAnnouncement" element={<MyAnnouncement drinkingText={drinkingText}
-                    smokingText={smokingText}
-                    visitsFrequencyText={visitsFrequencyText}
-                    loudnessText={loudnessText}
-                    userID = {userID}
-                    />} />
-                <Route path="/EditAnnouncement" element={<EditAnnouncement drinkingText={drinkingText}
-                    smokingText={smokingText}
-                    visitsFrequencyText={visitsFrequencyText}
-                    loudnessText={loudnessText} />} />
+
+
+                <Route path="/Home" element={
+                    <PrivateRoute>
+                        <Home userID={userID} drinkingText={drinkingText}
+                            smokingText={smokingText}
+                            visitsFrequencyText={visitsFrequencyText}
+                            loudnessText={loudnessText}
+                        />
+                    </PrivateRoute>
+                } />
+                <Route path="/Announcement/:id" element={
+                    <PrivateRoute>
+                        <ViewAnnouncement drinkingText={drinkingText}
+                            smokingText={smokingText}
+                            visitsFrequencyText={visitsFrequencyText}
+                            loudnessText={loudnessText} />
+                    </PrivateRoute>
+                } />
+                <Route path="/MyAnnouncement" element={
+                    <PrivateRoute>
+                        <MyAnnouncement drinkingText={drinkingText}
+                            smokingText={smokingText}
+                            visitsFrequencyText={visitsFrequencyText}
+                            loudnessText={loudnessText}
+                            userID={userID}
+                        />
+                    </PrivateRoute>
+                } />
+                <Route path="/EditAnnouncement" element={
+                    <PrivateRoute>
+
+                        <EditAnnouncement drinkingText={drinkingText}
+                            smokingText={smokingText}
+                            visitsFrequencyText={visitsFrequencyText}
+                            loudnessText={loudnessText} />
+                    </PrivateRoute>
+                } />
+
+
+
+
 
             </Routes>
         </BrowserRouter>

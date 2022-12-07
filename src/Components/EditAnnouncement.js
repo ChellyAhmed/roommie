@@ -43,15 +43,18 @@ function EditAnnouncement() {
         <>
             <h1 className="page-title">Edit Announcement</h1>
                 <div className="box" >
-                    <form>
+                    <form onSubmit={(e) => {
+                        e.preventDefault();
+                        update();
+                    }} >
                         {/* Location */}
                         <label className="form-label">Location:</label>
                         <input type="text" className="form-control" placeholder="house address" value={location}  onChange={(e) => {setLocation(e.target.value)}}/>
                         {/* House description */}
                         <label className="form-label">House description:</label>
-                        <textarea style={{ width: "100%" }} value={houseDescription}  onChange={(e) => {setHouseDescription(e.target.value)}}/>
+                        <textarea style={{ width: "100%" }} value={houseDescription?houseDescription:""}  onChange={(e) => {setHouseDescription(e.target.value)}}/>
                         <div className="buttons-container">
-                            <button className="btn btn-primary" onClick={update}>Save</button>
+                            <button type='button' className="btn btn-primary" onClick={update}>Save</button>
                             <Link className="btn btn-secondary" to="/MyAnnouncement">Cancel</Link>
                         </div>
                     </form>

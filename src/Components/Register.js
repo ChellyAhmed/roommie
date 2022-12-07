@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import P1 from "./p1.png";
-import P2 from "./p2.png";
+import P1 from "../Assets/p1.png";
+import P2 from "../Assets/p2.png";
 
 function Register() {
   const [emailIsValid, setEmailIsValid] = useState(true);

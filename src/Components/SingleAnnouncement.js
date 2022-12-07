@@ -1,5 +1,5 @@
-import male from "./male.png";
-import female from "./female.png";
+import male from "../Assets/male.png";
+import female from "../Assets/female.png";
 import { Link } from "react-router-dom";
 
 function SingleAnnouncement({ announcement,
