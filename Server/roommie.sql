@@ -32,3 +32,4 @@ CREATE TABLE Announcement (
         REFERENCES User (userID),
     CONSTRAINT AnnouncementPK PRIMARY KEY (announcementID, refUserID)
 );
+ 
